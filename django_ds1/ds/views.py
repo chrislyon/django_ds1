@@ -18,6 +18,9 @@ def data(request):
 	data = []
 	## Mapping ORM Django avec requete ajax
 	for R in DService.objects.all():
+		modif  = '<a href="/ds/modif/%s">' % R.id
+		modif += '<img border="0" alt="Modif" src="/static/icons/icon_modif.png" width="15" height="15">'
+		modif += '</a>'
 		data.append( [ 
 			R.DS_Type, 
 			R.DS_TiersDemandeur, 
@@ -29,6 +32,7 @@ def data(request):
 			R.DS_TempsEstime, 
 			R.DS_TempsRealise,
 			R.DS_Echeance,
+			modif
 			] )
 	my_data['data'] = data
 	nb = len(data)

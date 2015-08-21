@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="/static/DataTables/media/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="/static/DataTables/media/js/jquery.dataTables.js"></script>
 <script type="text/javascript">
-	$(document).ready( function () { $('#ds_list').DataTable( { ajax: '/ds/data/' } ); } );
+	$(document).ready( function () { $('#ds_list').DataTable( { ajax: '/ds/data/', select: true } ); } );
 </script>
 {% endblock %}
 
@@ -35,6 +35,7 @@
             <th>Temps Estimé</th>
             <th>Temps Réalisé</th>
             <th>Echéance</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
