@@ -25,7 +25,7 @@ def data(request):
 			R.DS_Sujet, 
 			R.DS_Statut, 
 			R.DS_Assigne, 
-			R.DS.Priorite, 
+			R.DS_Priorite, 
 			R.DS_TempsEstime, 
 			R.DS_TempsRealise,
 			R.DS_Echeance,
