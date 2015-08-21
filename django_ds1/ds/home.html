@@ -1,26 +1,47 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
-{% block page_title %}DS / Main page {% endblock %}
+{% block extrahead %}
 
+{% include 'bootstrap_head.html' %}
 
-{% block extrahead %} {% include 'bootstrap_head.html' %} {% endblock %}
+<script src='/static/jquery-2.1.4.min.js' type="text/javascript"></script>
+<script src='/static/jquery-ui/jquery-ui.js' type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="/static/DataTables/media/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="/static/DataTables/media/js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+	$(document).ready( function () { $('#ds_list').DataTable( { ajax: '/ds/data/' } ); } );
+</script>
+{% endblock %}
 
 {% block content %}
 
-{% include 'bootstrap_body.html' %}
-{% csrf_token %}
-<div class="page-header">
-<h1>Demande Systeme
-<small>/ Main Page </small>
-</h1>
-</div>
-<ul class="breadcrumb">
-<li><a href="/">Menu</a> <span class="divider">/</span></li>
-<li><a href="/logout">Logout</a> <span class="divider">/</span></li>
-<li class="active">main_page</li>
-</ul>
+<!-- ne pas faire include bootstrap_body => sinon pas de DataTables -->
 
-<p> DS </p>
+<div class="page-header" >
+	<h1>Demandes Systeme <small> en cours </small></h1>
+</div>
+
+
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="ds_list">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Demandeur</th>
+            <th>Tiers Facture</th>
+            <th>Sujet</th>
+            <th>Statut</th>
+            <th>Assigne à</th>
+            <th>Priorité</th>
+            <th>Temps Estimé</th>
+            <th>Temps Réalisé</th>
+            <th>Echéance</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    <tfoot>
+    </tfoot>
+</table>
+
 
 {% endblock %}
-
