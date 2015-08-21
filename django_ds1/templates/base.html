@@ -1,0 +1,23 @@
+<!-- 
+	BASE.html
+	Les librairies sont dans les templates fils
+-->
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+	<!-- HEAD -->
+	<head>
+	<title>{% block page_title %}{% endblock %}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% block css %} {% endblock %}
+	{% block js %} {% endblock %}
+	{% block extrahead %}{% endblock %}
+	</head>
+
+	<!-- BODY -->
+	<body>
+		{% block page_head %}{% endblock %}
+		{% block content %}{% endblock %}
+		{% block page_foot %}{% endblock %}
+	</body>
+</html>

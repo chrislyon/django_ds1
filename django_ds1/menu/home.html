@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block page_title %} DS / Menu Principal {% endblock %}
+{% block extrahead %} {% include 'bootstrap_head.html' %} {% endblock %}
+
+
+{% block content %}
+{% include 'bootstrap_body.html' %}
+
+<div class="page-header">
+	<h1>Demande Systeme <small> / Menu Principal</small> </h1>
+</div>
+
+	{% if form.errors %}
+		<p>Login / Password Inconnu </p>
+		<a href='/'>retour</a>
+	{% else %}
+		{% if request.user.is_authenticated %}
+			<ul class="breadcrumb">
+				<li><a href="/">Menu</a> <span class="divider">/</span></li>
+				<li class="active">Home</li>
+			</ul>
+			<a href="/logout">Deconnexion</a>
+		{% else %}
+			{% csrf_token %}
+			{% crispy form %}
+		{% endif %}
+	{% endif %}
+
+{% endblock %}

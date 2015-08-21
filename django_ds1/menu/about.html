@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}DS /About Page {% endblock %}
+
+
+{% block extrahead %} {% include 'bootstrap_head.html' %} {% endblock %}
+
+{% block content %}
+
+{% include 'bootstrap_body.html' %}
+<div class="page-header">
+<h1>Demande Systeme
+<small>/ About Page</small>
+</h1>
+</div>
+<ul class="breadcrumb">
+<li><a href="/">Menu</a> <span class="divider">/</span></li>
+<li class="active">About</li>
+</ul>
+
+<div class="well">
+<pre>
+		<h1> ABOUT </h1>
+		
+		Cette application est developpé avec DJANGO 
+		plus quelques petits trucs pour la présentation
+		(c) Chris / SRA 2015
+
+
+
+	    ...
+</pre>
+</div>
+
+{% endblock %}
+

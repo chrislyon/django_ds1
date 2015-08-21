@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block page_title %}DS / Main page {% endblock %}
+
+
+{% block extrahead %} {% include 'bootstrap_head.html' %} {% endblock %}
+
+{% block content %}
+
+{% include 'bootstrap_body.html' %}
+{% csrf_token %}
+<div class="page-header">
+<h1>Demande Systeme
+<small>/ Main Page </small>
+</h1>
+</div>
+<ul class="breadcrumb">
+<li><a href="/">Menu</a> <span class="divider">/</span></li>
+<li><a href="/logout">Logout</a> <span class="divider">/</span></li>
+<li class="active">main_page</li>
+</ul>
+
+<p> DS </p>
+
+{% endblock %}
+
