@@ -18,7 +18,8 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-	url('^$', 'ds.views.home'),
-	url('^data/$', 'ds.views.data' ),
-	url('^crds/$', 'ds.views.crds' ),
+	url('^$', 'crud.views.crud_list', name='crud_list'),
+	url('^create/$', 'crud.views.crud_create', name='crud_create' ),
+	url('^update/(?P<pk>\d+)$', 'crud.views.crud_update', name='crud_update' ),
+	url('^del/(?P<pk>\d+)$', 'crud.views.crud_delete', name='crud_delete' ),
 ]

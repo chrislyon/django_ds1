@@ -41,6 +41,7 @@ INSTALLED_APPS = (
 	'crispy_forms',
 	'menu',
 	'ds',
+	'crud',
 )
 
 MIDDLEWARE_CLASSES = (

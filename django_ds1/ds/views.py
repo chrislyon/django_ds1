@@ -41,3 +41,8 @@ def data(request):
 
 	# Et on les envoie
 	return JsonResponse(my_data)
+
+@login_required(login_url='/accounts/login/')
+def crds(request):
+	title = 'DS / Creation Demande de Service'
+	return render(request, 'ds/form.html', {'page_title':title })

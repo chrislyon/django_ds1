@@ -1,0 +1,11 @@
+<h1>Servers</h1>
+<ul>
+	{% for server in object_list %}
+		<li>{{ server.S_Nom }}  :  
+		<a href="{% url "crud_update" server.id %}">{{ server.S_IP }}</a>
+		<a href="{% url "crud_delete" server.id %}">delete</a>
+		</li>
+	{% endfor %}
+</ul>
+
+<a href="{% url "crud_create" %}">New</a>

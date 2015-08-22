@@ -24,4 +24,5 @@ urlpatterns = [
 	url(r'^accounts/login/$', auth_views.login, {'template_name': 'menu/home.html'} ),
 	url(r'^logout/$', 'menu.views.logout_view', name='logout'),
 	url('^ds/', include('ds.urls')),
+	url('^crud/', include('crud.urls')),
 ]
