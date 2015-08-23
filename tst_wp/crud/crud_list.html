@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block page_title %}DS / Liste des Serveurs {% endblock %}
+{% block TITRE %} LISTE DES SERVEURS {% endblock %}
+{% block SousTitre %}Gestion des Serveurs{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/table.css" type="text/css">
+{% endblock %}
+
+
+{% block content %}
+<table id="table_list">
+	<tr>
+	<th> Serveur </th> <th> Modif </th> <th> Delete </th>
+	</tr>
+	{% for server in object_list %}
+		<tr>
+		<td> {{ server.S_Nom }}  :  </td>
+		<td> <a href="{% url "crud_update" server.id %}">{{ server.S_IP }}</a> </td>
+		<td> <a href="{% url "crud_delete" server.id %}">delete</a> </td>
+		</tr>
+	{% endfor %}
+</table>
+
+<a href="{% url "crud_create" %}">New</a>
+{% endblock %}
