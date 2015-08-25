@@ -6,7 +6,7 @@
 
 #table_list td, #table_list th {
 	font-size: 1em;
-	border: 1px solid #927ad9;
+	border: 1px solid #bab8af;
 	padding: 3px 7px 2px 7px;
 }
 
@@ -15,11 +15,11 @@
 	text-align: left;
 	padding-top: 5px;
 	padding-bottom: 4px;
-	background-color: #927ad9;
+	background-color: #bab8af;
 	color: #ffffff;
 }
 
 #table_list tr.alt td {
 	color: #000000;
-	background-color: #EAF2D3;
+	background-color: #bab8af;
 }

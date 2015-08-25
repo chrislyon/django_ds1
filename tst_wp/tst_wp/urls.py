@@ -20,5 +20,6 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'menu.views.home'),
     url(r'^menu/', include('menu.urls')),
+    url(r'^p1/', include('p1.urls')),
     url(r'^crud/', include('crud.urls')),
 ]

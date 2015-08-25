@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>{% block page_title %} PAGE P1 {% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/w3.css" type="text/css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% block css %} {% endblock %}
+	{% block js %} {% endblock %}
+  </head>
+
+  <body id="index" class="home"> 
+    
+    <header class="w3-container w3-blue-grey w3-margin-top">
+      <h1>
+		  <a href="#">{% block TITRE %}P1{% endblock %} </a>
+	  </h1>
+	  <strong> {% block SousTitre %}Super Test de Page{% endblock %} </strong>
+      <nav  class="w3-topnav w3-teal">
+          <a href="/p1">home</a>
+          <a href="/p1/f1">form1</a>
+          <a href="/p1/t1">Table1</a>
+          <a href="/p1/Link3">Link3</a>
+          <a href="/p1/about">About</a>
+      </nav>
+    </header>
+    <!-- /#banner -->
+    
+    <section id="content" class="body">
+          <article>
+				{% block content %}
+				{% endblock %}
+          </article>
+	</section>
+    <!-- /#content -->
+    
+    <footer class="w3-container w3-blue-grey w3-margin-top">
+		{% block page_footer %}
+		<p class="page-footer">  (c) Chris / SRA  : developpé avec DJANGO </p>
+		{% endblock %}
+    </footer>
+    <!-- /#extras -->
+    
+    
+  </body>
+</html>

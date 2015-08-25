@@ -106,7 +106,7 @@ table {margin: .5em auto 1.5em auto; width: 98%;}
     }
 
 /***** Layout *****/
-.body {clear: both; margin: 0 auto; width: 800px;}
+.body { clear: both; margin: 0 auto; width: 800px; }
 img.right figure.right {float: right; margin: 0 0 2em 2em;}
 img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 /*
@@ -182,3 +182,26 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
   }
   
  
+ /* */
+
+div.page-footer {
+	padding: 5px;
+}
+p.page-footer {
+	background-color: #b0c4de;
+	padding: 10px;
+    font-size: 0.675em;
+}
+
+html, body {
+	height: 100%;
+	margin: 0; padding: 0;
+}
+body {
+	display : table;
+	width: 100%;
+}
+footer {
+	display : table-row;
+	height: 100px; /* à titre d'exemple */
+}

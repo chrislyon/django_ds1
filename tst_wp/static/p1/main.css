@@ -1,0 +1,123 @@
+/*
+===========================
+MAIN CSS 
+===========================
+*/
+
+/* Import */
+@import url("reset.css");
+
+
+/******************************
+** HTML
+*******************************/
+html, body {
+	height: 100%;
+	margin: 0; padding: 0;
+}
+
+/******************************
+** BODY 
+*******************************/
+body {
+	display : table;
+	width: 100%;
+	background: #F5F4EF url('../images/bg.png');
+	color: #000305;
+	font-size: 87.5%; /* Base font size: 14px */
+	font-size: 100%;
+	font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	line-height: 1.429;
+	margin-left: 10px;
+	margin-right: 0;
+	padding: 0;
+	text-align: left;
+}
+
+/* Headings */
+h2 {font-size: 1.571em} /* 22px */
+h3 {font-size: 1.429em} /* 20px */
+h4 {font-size: 1.286em} /* 18px */
+h5 {font-size: 1.143em} /* 16px */
+h6 {font-size: 1em} /* 14px */
+
+h2, h3, h4, h5, h6 {
+	font-weight: 400;
+	line-height: 1.1;
+	margin-bottom: .8em;
+}
+
+/******************************
+** HEADER
+*******************************/
+#banner {
+	margin-top: 0;
+	margin-bottom: 10px;
+	margin-left: auto ;
+	margin-right:auto ;
+	padding: 2.5em 0 0 0;
+}
+
+/* Banner */
+#banner h1 {font-size: 3.571em; line-height: .6;}
+#banner h1 a:link, #banner h1 a:visited {
+	color: #000305; /* Noir */
+	display: block;
+	font-weight: bold;
+	margin: 0 0 .6em .4em;
+	text-decoration: none;
+	/* Taille Max du titre */
+	width: 800px;
+}
+
+#banner h1 a:hover, #banner h1 a:active {
+	background: none;
+	color: #C74350; /* Vieux Rose */
+	text-shadow: none;
+}
+
+#banner h1 strong {font-size: 0.36em; font-weight: normal;}
+
+
+/******************************
+** BARRE NAV
+*******************************/
+#banner nav {
+	background: #bab8af;
+	font-size: 1.143em;
+	height: 40px;
+	line-height: 30px;
+	padding: 0;
+	text-align: center;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+#banner nav ul {list-style: none; margin: 0 0; width: 800px;}
+#banner nav li {float: left; display: inline; margin: 0;}
+
+#banner nav a:link, #banner nav a:visited {
+	color: #fff;
+	display: inline-block;
+	height: 30px;
+	padding: 5px 1.5em;
+	text-decoration: none;
+}
+
+#banner nav a:hover, #banner nav a:active,
+#banner nav .active a:link, #banner nav .active a:visited {
+	background: #7944C7;
+	color: #fff;
+	text-shadow: none !important;
+}
+
+
+/******************************
+** FOOTER
+*******************************/
+footer {
+	display : table-row;
+	height: 50px;
+	background: #d8d4c0; /* Gris Beige */
+}
