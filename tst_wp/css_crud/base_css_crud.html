@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>{% block page_title %}TITRE_DE_LA_PAGE{% endblock %}</title>
+	<link rel="stylesheet" href="/static/css/reset.css" type="text/css">
+	<link rel="stylesheet" href="/static/css/w3.css" type="text/css">
+	<link rel="stylesheet" href="/static/css/label.css" type="text/css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% block css %} {% endblock %}
+	{% block js %} {% endblock %}
+  </head>
+
+  <body id="index" class="home"> 
+    
+	{% include 'header_css.html' %}
+    
+    <section id="content" class="body">
+          <article>
+				{% block content %}
+				{% endblock %}
+          </article>
+	</section>
+    <!-- /#content -->
+    
+	{% include 'footer_css.html' %}
+	</body>
+</html>

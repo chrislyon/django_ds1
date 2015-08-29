@@ -1,4 +1,4 @@
-"""tst_wp URL Configuration
+"""django_ds1 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.8/topics/http/urls/
@@ -15,12 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'menu.views.home'),
-    url(r'^menu/', include('menu.urls')),
-    url(r'^p1/', include('p1.urls')),
-    url(r'^crud/', include('crud.urls')),
-    url(r'^css_crud/', include('css_crud.urls')),
+	url('^$', 'css_crud.views.crud_list', name='css_crud_list'),
+	url('^create/$', 'css_crud.views.crud_create', name='css_crud_create' ),
+	url('^update/(?P<pk>\d+)$', 'css_crud.views.crud_update', name='css_crud_update' ),
+	url('^del/(?P<pk>\d+)$', 'css_crud.views.crud_delete', name='css_crud_delete' ),
 ]

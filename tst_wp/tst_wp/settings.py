@@ -41,6 +41,7 @@ INSTALLED_APPS = (
 	'menu',
 	'p1',
 	'crud',
+	'css_crud',
 )
 
 MIDDLEWARE_CLASSES = (

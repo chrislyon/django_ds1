@@ -1,0 +1,15 @@
+{% extends 'css_crud/base_css_crud.html' %}
+
+
+{% block content %}
+	<form method="post" class="w3-container w3-card-8">{% csrf_token %}
+
+	{% for field in form %}
+		<div class="w3-group">
+		{{ field.errors }}
+		{{ field.label_tag }} {{ field }}
+		</div>
+	{% endfor %}
+	<input type="submit" value="Submit" />
+	</form>
+{% endblock %}

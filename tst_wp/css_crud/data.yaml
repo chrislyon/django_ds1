@@ -1,0 +1,9 @@
+- model: css_crud.Serveur
+	pk: 1
+    fields:
+		S_Nom: TEST1
+		S_Type: VM
+		S_IP: 127.0.0.1
+		S_OSTYPE: UNIX
+		S_OSVersion: RH5
+		S_Desc: 

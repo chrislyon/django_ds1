@@ -1,0 +1,9 @@
+label {
+	float: left;
+	text-align: right;
+	font-weight: bold;
+	display: block;
+	width: 150px;
+	float: left;
+	padding-right: 10px;
+}
