@@ -18,7 +18,9 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-	url('^$', 'ds.views.home'),
-	url('^data/$', 'ds.views.data' ),
-	url('^crds/$', 'ds.views.crds' ),
+	url('^$', 'ds.views.home', name='ds_home'),
+	url('^data/$', 'ds.views.data', name='ds_data' ),
+	url('^ds_cr/$', 'ds.views.ds_create', name='ds_create' ),
+	url('^ds_upd/(?P<pk>\d+)$', 'ds.views.ds_update', name='ds_update' ),
+	url('^ds_del/(?P<pk>\d+)$', 'ds.views.ds_delete', name='ds_delete' ),
 ]

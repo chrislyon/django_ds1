@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block page_title %} {{ page_title }} {% endblock %}
+{% block extrahead %} {% include 'bootstrap_head.html' %} {% endblock %}
+
+
+{% block content %}
+{% include 'bootstrap_body.html' %}
+
+<div class="page-header">
+	<h1>Demande Systeme <small> / {{ page_title }} </small> </h1>
+</div>
+
+	{% if form.errors %}
+		<p> ERREUR FORM </p>
+		<a href='/'> BACK </a>
+	{% else %}
+		{% if request.user.is_authenticated %}
+			<ul class="breadcrumb">
+				<li><a href="/">Menu</a> <span class="divider">/</span></li>
+				<li class="active">Home</li>
+			</ul>
+			{% csrf_token %}
+			{% crispy form %}
+		{% endif %}
+	{% endif %}
+
+{% endblock %}

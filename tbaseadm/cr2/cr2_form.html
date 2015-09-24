@@ -1,0 +1,17 @@
+{% extends 'base_tb.html' %}
+
+{% block content %}
+<form method="post">{% csrf_token %}
+<fieldset>
+<legend> Saisie d'un Auteur </legend>
+<table>
+<thead>
+</thead>
+{{ form.as_table }}
+</table>
+</fieldset>
+<fieldset class="buttons">
+<input type="submit" value="Submit" />
+</fieldset>
+</form>
+{% endblock %}

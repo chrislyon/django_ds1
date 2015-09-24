@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -37,7 +38,7 @@ class DService(HoroDatage):
 	DS_TiersFacture = models.CharField(max_length=20, default=DEF_TFAC, blank=True, verbose_name='Tiers Facture')
 
 	DS_Sujet = models.CharField(blank=True, max_length=50, verbose_name='Sujet')
-	DS_Desc = models.TextField( blank=True, verbose_name='Description')
+	DS_Desc = RichTextField( blank=True, verbose_name='Description')
 
 	STATUT_DS = (
 		( 'NEW', 'Nouvelle' ),

@@ -2,7 +2,29 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 
+from django.forms import ModelForm
 from ds.models import DService
+from ds.forms import DS_Form
+
+#class DS_Form(ModelForm):
+#	class Meta:
+#		model = DService
+#		fields = [ 	'DS_Type', 
+#					'DS_TiersDemandeur', 
+#					'DS_TiersFacture', 
+#					'DS_Sujet', 
+#					'DS_Desc', 
+#					'DS_Statut',
+#					'DS_Assigne',
+#					'DS_Priorite',
+#					'DS_Horo_Debut',
+#					'DS_Horo_Fin',
+#					'DS_TempsEstime', 
+#					'DS_TempsRealise', 
+#					'DS_PC_Realise', 
+#					'DS_Echeance'
+#				]
+#
 
 @login_required(login_url='/accounts/login/')
 def home(request):
@@ -11,8 +33,8 @@ def home(request):
 
 @login_required(login_url='/accounts/login/')
 def data(request):
-    # Ici on prend toute la table
-    # On construit les donnes json
+	# Ici on prend toute la table
+	# On construit les donnes json
 	my_data = {}
 	my_data['draw'] = 1
 	data = []
@@ -42,7 +64,34 @@ def data(request):
 	# Et on les envoie
 	return JsonResponse(my_data)
 
+#@login_required(login_url='/accounts/login/')
+#def ds_create(request):
+#	title = 'Creation Demande de Service'
+#	return render(request, 'ds/ds_form.html', {'page_title':title })
+
 @login_required(login_url='/accounts/login/')
-def crds(request):
-	title = 'DS / Creation Demande de Service'
-	return render(request, 'ds/form.html', {'page_title':title })
+def ds_create(request, template_name='ds/ds_form.html'):
+    form = DS_Form(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('ds_home')
+    return render(request, template_name, {'form':form})
+
+### A Modifier
+
+@login_required(login_url='/accounts/login/')
+def ds_update(request, pk, template_name='crud/crud_form.html'):
+    crud = get_object_or_404(Serveur, pk=pk)
+    form = ServeurForm(request.POST or None, instance=crud)
+    if form.is_valid():
+        form.save()
+        return redirect('crud_list')
+    return render(request, template_name, {'form':form})
+
+@login_required(login_url='/accounts/login/')
+def ds_delete(request, pk, template_name='crud/crud_confirm_delete.html'):
+    crud = get_object_or_404(Serveur, pk=pk)    
+    if request.method=='POST':
+        crud.delete()
+        return redirect('crud_list')
+    return render(request, template_name, {'object':crud})
