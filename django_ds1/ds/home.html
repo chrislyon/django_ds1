@@ -6,10 +6,25 @@
 
 <script src='/static/jquery-2.1.4.min.js' type="text/javascript"></script>
 <script src='/static/jquery-ui/jquery-ui.js' type="text/javascript"></script>
+<!-- Themes pour les boutons -->
+<link rel="stylesheet" href="/static/jquery-ui-themes/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="/static/DataTables/media/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="/static/DataTables/media/js/jquery.dataTables.js"></script>
+<!-- Necessaire pour déclencher la datatable -->
 <script type="text/javascript">
 	$(document).ready( function () { $('#ds_list').DataTable( { ajax: '/ds/data/'} ); } );
+</script>
+<script>
+	<!-- Petit bout de script pour que le CSS prenne sur les boutons -->
+	$(function() {
+		$( "input[type=submit], a, button" )
+			.button()
+			.click(function( event ) {
+			// si on decommente le button ne fonctionne plus
+			// cela doit servir pour les button submit ou <button>
+			//event.preventDefault();
+		});
+	});
 </script>
 {% endblock %}
 
@@ -18,10 +33,21 @@
 <!-- ne pas faire include bootstrap_body => sinon pas de DataTables -->
 
 <div class="page-header" >
-	<h1>Demandes Systeme <small> en cours </small></h1>
+	<h2>Demandes Systeme <small> en cours </small></h2>
 </div>
 
 
+<!-- pour inclure un ou plusieurs bouton -->
+<div style="padding:10px;"> 
+<a href="/ds/ds_cr/">Nouvelle Demande</a>
+<!-- <a href="/ds/ds_cr/">Nouvelle Demande</a> -->
+<!-- <button> Un Bouton </button> -->
+<!-- <input type="submit" value="A submit button"> -->
+</div>
+
+<!-- La datatable avec ses colonnes -->
+<!-- thead / tbody / tfoot sont necessaire si on veut certaines fonctions -->
+<!-- comme le tri par colonne -->
 <table cellpadding="0" cellspacing="0" border="0" class="display" id="ds_list">
     <thead>
         <tr>
