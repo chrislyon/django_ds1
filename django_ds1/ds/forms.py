@@ -11,7 +11,7 @@ from ckeditor.widgets import CKEditorWidget
 from .models import DService
 
 
-class DS_Form(forms.Form):
+class DS_Form(forms.ModelForm):
 
 	DS_Type 			= forms.ChoiceField( label='Type de la Demande', choices=DService.TYPE_DS, initial = 'ASS')
 	DS_TiersDemandeur	= forms.CharField( label='Demandeur')
@@ -69,6 +69,10 @@ class DS_Form(forms.Form):
 	)
 
 	helper.layout = lay_2
+
+	class Meta:
+		model = DService
+		fields = '__all__'
 
 ## Essai de Layout
 #

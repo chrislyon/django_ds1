@@ -13,8 +13,13 @@
 </div>
 
 	{% if form.errors %}
-		<p> ERREUR FORM </p>
-		<a href='/'> BACK </a>
+		<div class="alert alert-warning" role="alert">
+		<p> Erreur(s) </p>
+		</div>
+		{{ form.errors }}
+		<div class="btn-group" role="group" aria-label="...">
+		<a href="javascript:history.back()"  class="btn btn-info" role="button" > GO BACK </a>
+		</div>
 	{% else %}
 		{% if request.user.is_authenticated %}
 			<ul class="breadcrumb">
