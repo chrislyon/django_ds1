@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 
@@ -6,31 +6,13 @@ from django.forms import ModelForm
 from ds.models import DService
 from ds.forms import DS_Form
 
-#class DS_Form(ModelForm):
-#	class Meta:
-#		model = DService
-#		fields = [ 	'DS_Type', 
-#					'DS_TiersDemandeur', 
-#					'DS_TiersFacture', 
-#					'DS_Sujet', 
-#					'DS_Desc', 
-#					'DS_Statut',
-#					'DS_Assigne',
-#					'DS_Priorite',
-#					'DS_Horo_Debut',
-#					'DS_Horo_Fin',
-#					'DS_TempsEstime', 
-#					'DS_TempsRealise', 
-#					'DS_PC_Realise', 
-#					'DS_Echeance'
-#				]
-#
-
+## Liste / Datatables
 @login_required(login_url='/accounts/login/')
 def home(request):
 	title = 'DS / MAIN PAGE'
 	return render(request, 'ds/home.html', {'page_title':title })
 
+## Pop liste / Datatables avec du json 
 @login_required(login_url='/accounts/login/')
 def data(request):
 	# Ici on prend toute la table
@@ -40,9 +22,12 @@ def data(request):
 	data = []
 	## Mapping ORM Django avec requete ajax
 	for R in DService.objects.all():
-		modif  = '<a href="/ds/modif/%s">' % R.id
+		modif  = '<a href="/ds/ds_upd/%s">' % R.id
 		modif += '<img border="0" alt="Modif" src="/static/icons/icon_modif.png" width="15" height="15">'
 		modif += '</a>'
+		delrec  = '<a href="/ds/ds_del/%s">' % R.id
+		delrec += '<img border="0" alt="delete" src="/static/icons/icon_delete.png" width="15" height="15">'
+		delrec += '</a>'
 		data.append( [ 
 			R.DS_Type, 
 			R.DS_TiersDemandeur, 
@@ -54,7 +39,8 @@ def data(request):
 			R.DS_TempsEstime, 
 			R.DS_TempsRealise,
 			R.DS_Echeance,
-			modif
+			modif,
+			delrec
 			] )
 	my_data['data'] = data
 	nb = len(data)
@@ -64,11 +50,7 @@ def data(request):
 	# Et on les envoie
 	return JsonResponse(my_data)
 
-#@login_required(login_url='/accounts/login/')
-#def ds_create(request):
-#	title = 'Creation Demande de Service'
-#	return render(request, 'ds/ds_form.html', {'page_title':title })
-
+## Nouvelle demande 
 @login_required(login_url='/accounts/login/')
 def ds_create(request, template_name='ds/ds_form.html'):
     form = DS_Form(request.POST or None)
@@ -77,21 +59,19 @@ def ds_create(request, template_name='ds/ds_form.html'):
         return redirect('ds_home')
     return render(request, template_name, {'form':form})
 
-### A Modifier
-
 @login_required(login_url='/accounts/login/')
-def ds_update(request, pk, template_name='crud/crud_form.html'):
-    crud = get_object_or_404(Serveur, pk=pk)
-    form = ServeurForm(request.POST or None, instance=crud)
+def ds_update(request, pk, template_name='ds/ds_form.html'):
+    crud = get_object_or_404(DService, pk=pk)
+    form = DS_Form(request.POST or None, instance=crud)
     if form.is_valid():
         form.save()
-        return redirect('crud_list')
+        return redirect('ds_home')
     return render(request, template_name, {'form':form})
 
 @login_required(login_url='/accounts/login/')
-def ds_delete(request, pk, template_name='crud/crud_confirm_delete.html'):
-    crud = get_object_or_404(Serveur, pk=pk)    
+def ds_delete(request, pk, template_name='ds/confirm_delete.html'):
+    crud = get_object_or_404(DService, pk=pk)    
     if request.method=='POST':
         crud.delete()
-        return redirect('crud_list')
+        return redirect('ds_home')
     return render(request, template_name, {'object':crud})

@@ -63,67 +63,15 @@ class DS_Form(forms.ModelForm):
 					),
 			),
 		FormActions(
-			Button('cancel', 'Annulation'),
+			Button('cancel', 'Annulation', onclick="javascript:history.back();"),
 			Submit('save_changes', 'Valider', css_class="btn-primary"),
 		)
 	)
 
 	helper.layout = lay_2
 
+	## Necessaire pour une ModelForm
 	class Meta:
 		model = DService
 		fields = '__all__'
-
-## Essai de Layout
-#
-#	lay_3 = Layout(
-#			Field('DS_Type'),
-#			Field('DS_TiersDemandeur'),
-#			Field('DS_TiersFacture'),
-#			Field('DS_Sujet'),
-#			Field('DS_Desc'),
-#			Field('DS_Statut'),
-#			Field('DS_Assigne'),
-#			Field('DS_Priorite'),
-#			Field('DS_Horo_Debut'),
-#			Field('DS_Horo_Fin'),
-#			Field('DS_TempsEstime'),
-#			Field('DS_TempsRealise'),
-#			Field('DS_PC_Realise'),
-#			Field('DS_Echeance'),
-#		FormActions(
-#			Submit('save_changes', 'Valider', css_class="btn-primary"),
-#			Submit('cancel', 'Annulation'),
-#		)
-#	)
-
-
-#	lay_1 = Layout(
-#		Fieldset( 'Demandeur',
-#			Field('DS_Type', label='Type de Demande' ),
-#			Field('DS_TiersDemandeur', css_class='input-xlarge'),
-#			Field('DS_TiersFacture', css_class='input-xlarge'),
-#			),
-#		Fieldset( 'Description',
-#			Field('DS_Sujet', css_class='input-xlarge'),
-#			Field('DS_Desc', css_class='input-xlarge'),
-#		),
-#		Fieldset( 'Statut',
-#			Field('DS_Statut', css_class='input-xlarge'),
-#			Field('DS_Assigne', css_class='input-xlarge'),
-#			Field('DS_Priorite', css_class='input-xlarge'),
-#		),
-#		Fieldset( 'Temps',
-#			Field('DS_Horo_Debut', css_class='input-xlarge'),
-#			Field('DS_Horo_Fin', css_class='input-xlarge'),
-#			Field('DS_TempsEstime', css_class='input-xlarge'),
-#			Field('DS_TempsRealise', css_class='input-xlarge'),
-#			Field('DS_PC_Realise', css_class='input-xlarge'),
-#			Field('DS_Echeance', css_class='input-xlarge'),
-#		),
-#		FormActions(
-#			Submit('save_changes', 'Valider', css_class="btn-primary"),
-#			Submit('cancel', 'Annulation'),
-#		)
-#	)
 
