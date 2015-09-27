@@ -17,17 +17,16 @@ class DS_Form(forms.ModelForm):
 	DS_TiersDemandeur	= forms.CharField( label='Demandeur')
 	DS_TiersFacture		= forms.CharField( label='Facture a')
 	DS_Sujet			= forms.CharField( label='Objet' )
-	#DS_Desc				= forms.CharField( label='Description', widget = forms.Textarea(), )
 	DS_Desc				= forms.CharField( label='Description', widget=CKEditorWidget() )
 	DS_Statut			= forms.ChoiceField( label='Statut', choices=DService.STATUT_DS, initial = 'NEW')
 	DS_Assigne			= forms.CharField( label='Asssigne a' )
 	DS_Priorite			= forms.CharField( label='Priorité' )
-	DS_Horo_Debut		= forms.CharField( label='Debut' )
-	DS_Horo_Fin			= forms.CharField( label='Fin' )
+	#DS_Horo_Debut		= forms.DateTimeField( label='Debut', widget=forms.TextInput( attrs={ 'class': 'datepicker' } ))
+	#DS_Horo_Fin			= forms.DateTimeField( label='Fin' )
 	DS_TempsEstime		= forms.CharField( label='Temps Estime' )
 	DS_TempsRealise		= forms.CharField( label='Temps Realise' )
 	DS_PC_Realise		= forms.CharField( label='Realise' )
-	DS_Echeance			= forms.CharField( label='Echeance' )
+	#DS_Echeance			= forms.CharField( label='Echeance' )
 
 	# Uni-form
 	helper = FormHelper()
@@ -45,6 +44,16 @@ class DS_Form(forms.ModelForm):
 			Div('DS_Sujet', css_class='form-control'),
 			Div('DS_Desc'),
 			),
+		Fieldset( 'Debut et Fin',
+			HTML( "<table>"),
+			HTML( "<tr><td>"),
+				Field('DS_Horo_Debut', css_class='dp1'),
+				Field('DS_Horo_Fin', css_class='dp1'),
+			HTML( "</td><td>"),
+				Field('DS_Echeance', css_class='dp1'),
+			HTML( "</td></tr>"),
+			HTML( "</table>"),
+			),
 		Fieldset( 'Temps et Statut',
 				Div(
 					Div('DS_Statut', css_class='span5'),
@@ -52,12 +61,7 @@ class DS_Form(forms.ModelForm):
 					Div('DS_Priorite', css_class='span5'),
 					),
 				Div(
-					Div('DS_Horo_Debut', css_class='span5'),
-					Div('DS_Horo_Fin', css_class='span5'),
-					),
-				Div(
 					Div('DS_TempsEstime', css_class='span5'),
-					Div('DS_Echeance', css_class='span5'),
 					Div('DS_TempsRealise', css_class='span5'),
 					Div('DS_PC_Realise', css_class='span5'),
 					),
@@ -74,4 +78,3 @@ class DS_Form(forms.ModelForm):
 	class Meta:
 		model = DService
 		fields = '__all__'
-

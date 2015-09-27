@@ -6,6 +6,13 @@
 <script src="/static/jquery-2.1.4.min.js"></script>
 <script src="/static/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/static/uni-form-master/js/uni-form.jquery.js"></script>
+
+<link rel="stylesheet" href="/static/datepicker/css/datepicker.css">
+<script src="/static/datepicker/js/bootstrap-datepicker.js"></script>
+
 <script>
-  $(function(){ $('form.uniForm').uniform(); });
+	$(function(){ 
+		$('form.uniForm').uniform(); 
+		$('.dp1').datepicker( {format: 'dd-mm-yyyy'} );
+		});
 </script>

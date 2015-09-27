@@ -57,8 +57,8 @@ class DService(HoroDatage):
 	DS_Priorite = models.CharField(max_length=3, choices=PRIORITE_DS, default='N', verbose_name='Priorite')
 	DS_Assigne  = models.CharField(max_length=30, blank=True, verbose_name='Assigne')
 
-	DS_Horo_Debut = models.CharField(max_length=30, blank=True, verbose_name='Debut')
-	DS_Horo_Fin = models.CharField(max_length=30, blank=True, verbose_name='Fin')
+	DS_Horo_Debut = models.DateTimeField(max_length=30, blank=True, verbose_name='Debut')
+	DS_Horo_Fin = models.DateTimeField(max_length=30, blank=True, verbose_name='Fin')
 	DS_Echeance = models.CharField(max_length=30, blank=True, verbose_name='Avant le')
 	DS_TempsEstime = models.CharField(max_length=30, blank=True, verbose_name='Temps Estime')
 	DS_TempsRealise = models.CharField(max_length=30, blank=True, verbose_name='Temps Realise')

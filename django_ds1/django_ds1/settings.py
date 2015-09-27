@@ -40,6 +40,7 @@ INSTALLED_APPS = (
 	'django_extensions',
 	'crispy_forms',
 	'ckeditor',
+	'suit',
 	'menu',
 	'ds',
 	'crud',
